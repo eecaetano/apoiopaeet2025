@@ -90,16 +90,33 @@
       height: 20px;
     }
   </style>
-  <script>
-    function toggleInput(selectElement, inputId) {
-      var inputElement = document.getElementById(inputId);
-      if (selectElement.value === "OUTRO" || selectElement.value === "OUTRA TURMA") {
-        inputElement.style.display = "block";
-      } else {
-        inputElement.style.display = "none";
-      }
-    }
-  </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+    <script>
+        function saveAsPDF() {
+            const element = document.body;
+
+            // Configurações para o PDF
+            const opt = {
+                margin:       0.25,  // Ajuste das margens para 0.25 polegadas (~9mm)
+                filename:     'plano_de_aula.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Converte o conteúdo em PDF e pergunta onde salvar
+            html2pdf().set(opt).from(element).save();
+        }
+
+        function printPDF() {
+            window.print();
+        }
+
+        function startNew() {
+            document.querySelectorAll('.input-field, .textarea-field').forEach(field => field.value = '');
+            alert('Novo plano de aula iniciado');
+        }
+    </script>
 </head>
 <body>
   <!-- Cabeçalho com logo e informações -->
@@ -132,8 +149,7 @@
       <option>LILIANE COSTA DO NASCIMENTO</option>
       <option>MARCIO JOSE QUEIROZ OLIVEIRA</option>
       <option>SERGIO OLIVEIRA DE MENESES</option>
-      <option>NILTON</option>
-      <option value="OUTRO">OUTRO (DIGITE O NOME DO PROFESSOR)</option>
+     <option value="OUTRO">OUTRO (DIGITE O NOME DO PROFESSOR)</option>
     </select>
     <input type="text" id="outroProfessor" name="outroProfessor" style="display:none;" placeholder="Digite o nome do professor">
   </div>
@@ -265,5 +281,11 @@
       <div>Professor auxiliar do estudante do ensino técnico (PAEET)</div>
     </div>
   </div>
+  <!-- Botões de Ação -->
+    <div class="buttons">
+       <div class="line"><button onclick="saveAsPDF()">Salvar</button></div>
+        <div class="line"><button onclick="printPDF()">Imprimir</button></div>
+        <div class="line"><button onclick="startNew()">Novo</button></div>
+    </div>
 </body>
 </html>
