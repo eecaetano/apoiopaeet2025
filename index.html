@@ -89,6 +89,10 @@
       margin-bottom: 5px;
       height: 20px;
     }
+    .buttons {
+    display: flex;
+    gap: 10px; /* Espaçamento opcional entre os botões */
+}
   </style>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
     <script>
@@ -282,10 +286,11 @@
     </div>
   </div>
   <!-- Botões de Ação -->
-    <div class="buttons">
-       <div class="line"><button onclick="saveAsPDF()">Salvar</button></div>
-        <div class="line"><button onclick="printPDF()">Imprimir</button></div>
-        <div class="line"><button onclick="startNew()">Novo</button></div>
-    </div>
+  <!-- Botões de Ação -->
+<div class="buttons">
+    <button onclick="saveAsPDF()">Salvar</button>
+    <button onclick="printPDF()">Imprimir</button>
+    <button onclick="startNew()">Iniciar Novo</button>
+</div>
 </body>
 </html>
