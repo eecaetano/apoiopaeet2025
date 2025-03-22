@@ -74,7 +74,7 @@
       font-weight: normal;
       font-size: 16px; /* Aumenta o tamanho da fonte das opções */
     }
-    /* Assinaturas */
+       /* Assinaturas */
     .signature {
       display: flex;
       justify-content: space-between;
@@ -82,17 +82,24 @@
     }
     .signature .sig-box {
       width: 45%;
-      text-align: center;
+      text-align: center; 
     }
     .signature .line {
       border-bottom: 1px solid #000;
       margin-bottom: 5px;
       height: 20px;
     }
+    .signature select {
+      margin-top: 10px;
+    }
+    .signature .selected-option {
+      font-weight: bold;
+      font-style: italic;
+    }
     .buttons {
     display: flex;
     gap: 10px; /* Espaçamento opcional entre os botões */
-}
+    }
   </style>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
     <script>
@@ -274,19 +281,47 @@
     <label for="combinados">COMBINADOS PARA A PRÓXIMA SEMANA / OBSERVAÇÕES:</label><br>
     <textarea id="combinados" name="combinados" rows="3"></textarea>
   </div>
-  <!-- Área para assinaturas -->
+   <!-- Área para assinaturas -->
   <div class="signature">
     <div class="sig-box">
       <div class="line"></div>
       <div>Professor</div>
+      <select onchange="updateSignature(this)">
+        <option value="">Selecione uma assinatura</option>
+        <option value="A.S.C CIN 11718085***">A.S.C CIN 11718085***</option>
+        <option value="C.R.Z CIN 13664873***">C.R.Z CIN 13664873***</option>
+        <option value="K.A.O.S CIN 08187694***">K.A.O.S CIN 08187694***</option>
+        <option value="L.C.N CIN 17636439***">L.C.N CIN 17636439***</option>
+        <option value="M.J.Q.O. CIN 05282215***">M.J.Q.O. CIN 05282215***</option>
+        <option value="S.O.M. CIN 06428775">S.O.M. CIN 06428775***</option>
+      </select>
+      <div id="professor-signature"></div>
     </div>
     <div class="sig-box">
       <div class="line"></div>
-      <div>Professor auxiliar do estudante do ensino técnico (PAEET)</div>
+      <div>Professor (PAEET)</div>
+      <select onchange="updateSignature(this)">
+        <option value="">Selecione uma assinatura</option>
+        <option value="ANDERSON R DE OLIVEIRA">ANDERSON R DE OLIVEIRA</option>
+        <option value="LILIANE C. DO NASCIMENTO">LILIANE C. DO NASCIMENTO</option>
+      </select>
+      <div id="paeet-signature"></div>
     </div>
   </div>
+
+  <script>
+    function updateSignature(selectElement) {
+      const selectedValue = selectElement.value;
+      const signatureDiv = selectElement.nextElementSibling;
+      if (selectedValue) {
+        signatureDiv.innerHTML = `<span class="selected-option">${selectedValue}</span>`;
+      } else {
+        signatureDiv.innerHTML = '';
+      }
+    }
+  </script>
   <!-- Botões de Ação -->
-  <!-- Botões de Ação -->
+ 
 <div class="buttons">
     <button onclick="saveAsPDF()">Salvar</button>
     <button onclick="printPDF()">Imprimir</button>
