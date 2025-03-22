@@ -17,20 +17,25 @@
       box-sizing: border-box;
     }
     /* Estilo do cabeçalho */
-    .header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .header .logo {
-      margin: 0 auto 5px auto; /* Aumenta o espaçamento abaixo do logo */
-      max-width: 150px;
-    }
-    .header .logo img {
-      width: 100%;
-      height: auto;
-    }
+  .header {
+  text-align: center;
+  margin-bottom: 10px;
+  padding-top: 0; /* Adicionado para remover qualquer espaçamento superior */
+}
+
+.header .logo {
+  margin: 0 auto 5px auto;
+  max-width: 150px;
+  padding-top: 0; /* Adicionado para remover qualquer espaçamento superior */
+}
+
+.header .logo img {
+  width: 100%;
+  height: auto;
+  display: block; /* Garante que a imagem não tenha espaçamento adicional */
+}
     .header .header-text {
-      line-height: 1.1; /* Diminui o espaçamento entre as linhas */
+      line-height: 1; /* Diminui o espaçamento entre as linhas */
       font-weight: bold;
     }
     .header .header-text div {
