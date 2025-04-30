@@ -124,17 +124,27 @@
       document.querySelectorAll('.input-field, .textarea-field').forEach(field => field.value = '');
       alert('Novo plano de aula iniciado');
     }
-
-    function toggleInput(select, inputId) {
+  function toggleInput(select, inputId) {
       const input = document.getElementById(inputId);
-      if (select.value.includes("OUTRO")) {
-      input.style.display = 'block';
-      input.focus();
+      if (select.value === 'OUTRO') {
+        input.style.display = 'block';
+        input.focus();
       } else {
-      input.style.display = 'none';
-      input.value = '';
+        input.style.display = 'none';
+        input.value = '';
       }
     }
+   function toggleInput(select, inputId) {
+  const input = document.getElementById(inputId);
+  if (select.value === "OUTRO" || select.value === "OUTRA TURMA") {
+    input.style.display = 'block';
+    input.focus();
+  } else {
+    input.style.display = 'none';
+    input.value = '';
+  }
+}
+ 
   </script>
 </head>
 <body>
@@ -174,18 +184,18 @@
     </select>
     <input type="text" id="outroProfessor" name="outroProfessor" style="display:none; margin-top: 10px;" placeholder="Digite o nome do professor">
   </div>
-  <div class="form-group">
-    <label for="turma">Turma / Série:</label>
-    <select id="turma" name="turma" onchange="toggleInput(this, 'outroProfessor')">
-      <option>4050 - ADMINISTRAÇÃO - 2ª SERIE AT MANHA ANUAL</option>
-      <option>4050 - ADMINISTRAÇÃO - 3ª SERIE AT MANHA ANUAL</option>
-      <option>6082 - DESENVOLVIMENTO DE SISTEMAS - 2ª SERIE BT MANHA ANUAL</option>
-      <option>6082 - DESENVOLVIMENTO DE SISTEMOS - 3ª SERIE BT MANHA ANUAL</option>
-      <option>4065 - VENDAS - 2ª SERIE CT MANHA ANUAL</option>
-     <option value="OUTRO">OUTRA TURMA (Digite abaixo o nome da turma)</option>
-    </select>
-   <input type="text" id="outraProfessor" name="outroProfessor" style="display:none; margin-top: 10px;" placeholder="Digite o nome da Turma">
-  </div>
+ <div class="form-group">
+  <label for="turma">Turma / Série:</label>
+  <select id="turma" name="turma" onchange="toggleInput(this, 'outraTurma')">
+    <option>4050 - ADMINISTRAÇÃO - 2ª SERIE AT MANHA ANUAL</option>
+    <option>4050 - ADMINISTRAÇÃO - 3ª SERIE AT MANHA ANUAL</option>
+    <option>6082 - DESENVOLVIMENTO DE SISTEMAS - 2ª SERIE BT MANHA ANUAL</option>
+    <option>6082 - DESENVOLVIMENTO DE SISTEMOS - 3ª SERIE BT MANHA ANUAL</option>
+    <option>4065 - VENDAS - 2ª SERIE CT MANHA ANUAL</option>
+    <option value="OUTRO">OUTRA TURMA (Digite abaixo o nome da turma)</option>
+  </select>
+  <input type="text" id="outraTurma" name="outraTurma" style="display:none; margin-top: 10px;" placeholder="Digite o nome da Turma">
+</div>
   <div class="form-group">
     <label for="disciplina">Disciplina:</label>
     <select id="disciplina" name="disciplina">
